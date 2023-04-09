@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="ar">
+  <%- include("./partials/head") %>
+
+  <body id="body">
+    <%- include("./partials/header") %>
+
+    <main id="main">
+      <section>
+        <h1>Trending Articles &#128293;</h1>
+
+        <div class="parent-of-articles">
+
+
+          <% arrArticles.forEach(element => { %>
+
+          <article>
+            <h2><%= element.title %></h2>
+            <p>
+              <%= element.summary %>
+              <a class="btn" href="/all-articles/<%= element._id %>">Show More</a>
+            </p>
+          </article>
+
+          <% }); %>
+
+
+
+        </div>
+      </section>
+    </main>
+
+    <%- include("./partials/footer") %>
+  </body>
+</html>

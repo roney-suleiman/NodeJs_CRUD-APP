@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/header.ejs") %>
+
+    <h1> <%= objArticle.title %> </h1>
+    <p style="margin: 5rem; text-align: center;"> <%= objArticle.body %> </p>
+    <button data-linkid="<%= objArticle._id %>" class="create">Delete</button>
+    <%- include("./partials/footer.ejs") %>
+
+
+
+    <script>
+
+        const btn = document.querySelector('.create')
+        const articleId = btn.getAttribute('data-linkid');
+        console.log(articleId);
+
+        btn.addEventListener('click', (e) => {
+
+            fetch(`/all-articles/${articleId}`, {method: 'DELETE'})
+        .then((response) => {return response.json()})
+        .then((data) => window.location.href = data.myLink)
+        .catch((err) => {console.log(err);});
+
+        })
+
+    </script>
+</body>
+</html>
